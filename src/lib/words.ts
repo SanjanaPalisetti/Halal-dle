@@ -91,7 +91,7 @@ export const getWordOfDay = () => {
 
   return {
     // solution: localeAwareUpperCase(WORDS[sr]),
-    solution: WORDS[9],
+    solution: WORDS[10],
     solutionIndex: index,
     tomorrow: nextday,
   }
