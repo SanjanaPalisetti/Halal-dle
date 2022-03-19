@@ -4,7 +4,7 @@ import { VALID_GUESSES } from '../constants/validGuesses'
 import { WRONG_SPOT_MESSAGE, NOT_CONTAINED_MESSAGE } from '../constants/strings'
 import { getGuessStatuses } from './statuses'
 import { default as GraphemeSplitter } from 'grapheme-splitter'
-import { loadGameStateFromLocalStorage, loadStatsFromLocalStorage } from './localStorage'
+import { loadStatsFromLocalStorage } from './localStorage'
 
 export const isWordInWordList = (word: string) => {
   return (
@@ -84,10 +84,10 @@ export const getWordOfDay = () => {
   const index = Math.floor((now - epochMs) / msInDay)
   const nextday = (index + 1) * msInDay + epochMs
   const x = loadStatsFromLocalStorage()
-  let sr = 0
-  if(x){
-    sr = x.currentStreak
-  }
+  // let sr = 0
+  // if(x){
+  //   sr = x.currentStreak
+  // }
 
   return {
     // solution: localeAwareUpperCase(WORDS[sr]),
