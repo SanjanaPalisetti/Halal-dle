@@ -2,7 +2,7 @@ import { SENTENCES } from "../../constants/sentences";
 import './text.css'
 
 const Text = () => {
-    const sentence = SENTENCES[5]
+    const sentence = SENTENCES[6]
     return (
         <>
             <div className="text">{sentence}</div>
