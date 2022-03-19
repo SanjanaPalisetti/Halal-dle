@@ -1,8 +1,10 @@
 import { WORDS } from '../constants/wordlist'
+import { SENTENCES } from '../constants/sentences'
 import { VALID_GUESSES } from '../constants/validGuesses'
 import { WRONG_SPOT_MESSAGE, NOT_CONTAINED_MESSAGE } from '../constants/strings'
 import { getGuessStatuses } from './statuses'
 import { default as GraphemeSplitter } from 'grapheme-splitter'
+import { loadGameStateFromLocalStorage, loadStatsFromLocalStorage } from './localStorage'
 
 export const isWordInWordList = (word: string) => {
   return (
@@ -81,12 +83,28 @@ export const getWordOfDay = () => {
   const msInDay = 86400000
   const index = Math.floor((now - epochMs) / msInDay)
   const nextday = (index + 1) * msInDay + epochMs
+  const x = loadStatsFromLocalStorage()
+  let sr = 0
+  if(x){
+    sr = x.currentStreak
+  }
 
   return {
-    // solution: localeAwareUpperCase(WORDS[index % WORDS.length]),
-    solution: localeAwareUpperCase('UKULELE'),
+    // solution: localeAwareUpperCase(WORDS[sr]),
+    solution: WORDS[0],
     solutionIndex: index,
     tomorrow: nextday,
+  }
+}
+
+export const getSentence = () => {
+  const x = loadStatsFromLocalStorage()
+  let sr = 0
+  if(x){
+    sr = x.currentStreak
+  }
+  return {
+    sentence: SENTENCES[sr]
   }
 }
 
